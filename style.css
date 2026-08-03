@@ -385,3 +385,25 @@ font-weight:bold;
     font-weight:bold;
     cursor:pointer;
 }
+.payment-section{
+    padding:40px 20px;
+    text-align:center;
+}
+
+.payment-card{
+    background:#1f2937;
+    margin:15px auto;
+    padding:20px;
+    border-radius:15px;
+    max-width:350px;
+    border:2px solid #00ff99;
+}
+
+.payment-card h3{
+    color:#00ff99;
+}
+
+.payment-card p{
+    font-size:20px;
+    font-weight:bold;
+}
