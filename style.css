@@ -320,3 +320,40 @@ footer{
         transform:translateX(-100%);
     }
 }
+.packages{
+padding:40px 20px;
+text-align:center;
+}
+
+.packages h2{
+margin-bottom:20px;
+color:#00ff99;
+}
+
+.package-card{
+background:#1f2937;
+padding:20px;
+margin:15px auto;
+max-width:300px;
+border-radius:15px;
+}
+
+.package-card h3{
+font-size:24px;
+}
+
+.package-card p{
+font-size:20px;
+margin:10px 0;
+color:#00ff99;
+}
+
+.buy-btn{
+display:inline-block;
+padding:10px 25px;
+background:#00ff99;
+color:#000;
+text-decoration:none;
+border-radius:30px;
+font-weight:bold;
+}
