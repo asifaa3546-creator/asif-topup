@@ -92,6 +92,16 @@ header{
 
 <section class="hero">
   ...
+</section><header>
+  <!-- Header-এর সব কোড -->
+</header>
+
+<div class="offer-bar">
+🔥 Special Offer: Free Fire Diamond • PUBG UC • Mobile Legends Diamonds • Instant Delivery • 24/7 Support
+</div>
+
+<section class="hero">
+  ...
 </section> display:flex;
   justify-content:space-between;
   align-items:center;
