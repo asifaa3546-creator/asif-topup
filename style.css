@@ -1,4 +1,108 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial,sans-serif;
+}
 
+body{
+  background:#0b1220;
+  color:#fff;
+}
+
+header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:15px 20px;
+  background:#111827;
+  position:sticky;
+  top:0;
+  z-index:1000;
+}
+
+.logo{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.logo img{
+  width:50px;
+  height:50px;
+  border-radius:50%;
+}
+
+.logo h2{
+  color:#00ff99;
+}
+
+nav a{
+  color:white;
+  text-decoration:none;
+  margin-left:15px;
+  transition:.3s;
+}
+
+nav a:hover{
+  color:#00ff99;
+}
+
+.hero{
+  text-align:center;
+  padding:80px 20px;
+  background:linear-gradient(135deg,#111827,#1f2937);
+}
+
+.hero h1{
+  font-size:40px;
+  color:#00ff99;
+}
+
+.hero p{
+  margin:15px 0;
+  color:#ccc;
+}
+
+.btn{
+  display:inline-block;
+  background:#00ff99;
+  color:#000;
+  padding:12px 30px;
+  border-radius:30px;
+  text-decoration:none;
+  font-weight:bold;
+}
+
+.games{
+  padding:40px 20px;
+}
+
+.games h2{
+  text-align:center;
+  margin-bottom:25px;
+}
+
+.card{
+  background:#1f2937;
+  border-radius:15px;
+  padding:20px;
+  margin:15px 0;
+  text-align:center;
+}
+
+.card img{
+  width:80px;
+  height:80px;
+  object-fit:contain;
+}
+
+footer{
+  background:#111827;
+  text-align:center;
+  padding:20px;
+  margin-top:40px;
+}
 *{
   margin:0;
   padding:0;
