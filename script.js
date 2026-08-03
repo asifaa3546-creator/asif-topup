@@ -33,4 +33,4 @@ let url =
 
 window.open(url, "_blank");
 
-}
+}<script src="script.js"></script>
