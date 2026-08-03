@@ -1,1 +1,71 @@
 
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+<script src="script.js"></script>
+body{
+  background:#0f172a;
+  color:#fff;
+  font-family:Arial,sans-serif;
+}
+<link rel="stylesheet" href="style.css">
+header{
+  background:#16a34a;
+  padding:18px;
+  text-align:center;
+  font-size:28px;
+  font-weight:bold;
+}
+
+.hero{
+  text-align:center;
+  padding:35px 20px;
+}
+
+.hero h1{
+  font-size:32px;
+  margin-bottom:10px;
+}
+
+.hero p{
+  color:#cbd5e1;
+}
+
+.btn{
+  display:inline-block;
+  margin-top:20px;
+  padding:14px 28px;
+  background:#22c55e;
+  color:#fff;
+  text-decoration:none;
+  border-radius:10px;
+  font-weight:bold;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(170px,1fr));
+  gap:15px;
+  padding:20px;
+}
+
+.card{
+  background:#1e293b;
+  padding:20px;
+  border-radius:12px;
+  text-align:center;
+  transition:.3s;
+}
+
+.card:hover{
+  transform:translateY(-5px);
+}
+
+footer{
+  text-align:center;
+  background:#020617;
+  padding:20px;
+  margin-top:20px;
+}
