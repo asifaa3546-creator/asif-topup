@@ -34,3 +34,11 @@ let url =
 window.open(url, "_blank");
 
 }<script src="script.js"></script>
+<input type="text" id="uid" placeholder="Enter Player UID">
+<input type="text" id="player" placeholder="Enter Player Name">
+
+<select id="package">
+  ...
+</select>
+
+<button onclick="sendOrder()">Order Now</button>
