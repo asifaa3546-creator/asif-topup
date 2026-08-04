@@ -350,22 +350,22 @@ ASIF TOPUP
 
 <div class="grid">
 
-<div class="card">
+<div class="card"><img src="images/ff.png" alt="Free Fire">
 <h3>🔥 Free Fire</h3>
 <p>Diamond Top-Up</p>
 </div>
 
-<div class="card">
+<div class="card"><img src="images/pubg.png" alt="PUBG Mobile">
 <h3>🎮 PUBG</h3>
 <p>UC Top-Up</p>
 </div>
 
-<div class="card">
+<div class="card"><img src="images/ml.png" alt="Mobile Legends">
 <h3>⚔ Mobile Legends</h3>
 <p>Diamond Top-Up</p>
 </div>
 
-<div class="card">
+<div class="card"><img src="images/bloodstrike.png" alt="Blood Strike">
 <h3>💎 Coming Soon</h3>
 <p>More Games</p>
 </div>
