@@ -60,3 +60,15 @@ current = 0;
 slides[current].classList.add("active");
 
 },3000);
+const cards = document.querySelectorAll(".game-card");
+
+cards.forEach(card => {
+    card.addEventListener("click", () => {
+        const game = card.querySelector("h3").innerText.replace(/[^\w\s]/g, "").trim();
+        document.getElementById("game").value = game;
+        window.scrollTo({
+            top: document.querySelector(".order-form").offsetTop,
+            behavior: "smooth"
+        });
+    });
+});
