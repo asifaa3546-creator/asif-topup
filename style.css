@@ -1,4 +1,26 @@
-*{
+.hero{
+  text-align:center;
+  padding:20px;
+}
+
+.hero img{
+  width:100%;
+  max-width:450px;
+  border-radius:20px;
+  display:block;
+  margin:auto;
+}
+
+.hero h1{
+  color:#00ff99;
+  font-size:32px;
+  margin-top:15px;
+}
+
+.hero p{
+  color:#fff;
+  font-size:18px;
+}*{
   margin:0;
   padding:0;
   box-sizing:border-box;
