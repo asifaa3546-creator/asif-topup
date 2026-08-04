@@ -14,7 +14,9 @@ Package: ${pack}`;
     "_blank"
   );
 }function sendOrder() {
-
+if (!confirm("আপনি কি অর্ডার নিশ্চিত করতে চান?")) {
+    return;
+}
 let uid = document.getElementById("uid").value;
 let player = document.getElementById("player").value;
 let pack = document.getElementById("package").value;
