@@ -13,7 +13,15 @@ Package: ${pack}`;
     "https://wa.me/8801341181330?text="+encodeURIComponent(msg),
     "_blank"
   );
-}function sendOrder() {
+}function function sendOrder(packageName) {
+    let message = `🎮 ASIF TOPUP BD
+
+Package: ${packageName}`;
+
+    let url = `https://wa.me/8801341181330?text=${encodeURIComponent(message)}`;
+
+    window.open(url, "_blank");
+}() {
 if (!confirm("আপনি কি অর্ডার নিশ্চিত করতে চান?")) {
     return;
 }
