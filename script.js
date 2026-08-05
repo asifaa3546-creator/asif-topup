@@ -1,4 +1,21 @@
+function sendOrder(packageName) {
 
+    let uid = document.getElementById("uid").value;
+    let player = document.getElementById("player").value;
+
+    let message =
+`🎮 ASIF TOPUP BD
+
+🎯 Package: ${packageName}
+
+🆔 UID: ${uid}
+
+👤 Player Name: ${player}`;
+
+    let url = `https://wa.me/8801341181330?text=${encodeURIComponent(message)}`;
+
+    window.open(url, "_blank");
+}
 document.addEventListener("DOMContentLoaded", function () {
   alert("👋 Welcome to ASIF TOPUP!");
 });function orderNow(){
