@@ -97,3 +97,13 @@ cards.forEach(card => {
         });
     });
 });
+function checkStatus() {
+    let id = document.getElementById("orderId").value.trim();
+    let result = document.getElementById("statusResult");
+
+    if (id === "") {
+        result.innerHTML = "❌ Please enter your Order ID.";
+    } else {
+        result.innerHTML = "🟡 Status: Pending (Admin will update your order soon.)";
+    }
+}
