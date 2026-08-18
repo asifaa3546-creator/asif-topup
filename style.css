@@ -628,3 +628,21 @@ font-weight:bold;
     display:block;
     margin:0 auto 10px;
 }
+.limited-offer {
+  text-align: center;
+  padding: 25px;
+  margin: 20px 0;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #111, #252525);
+  border: 2px solid #00ff88;
+}
+
+.limited-offer h2 {
+  color: #00ff88;
+}
+
+#countdown {
+  font-size: 28px;
+  font-weight: bold;
+  margin: 15px 0;
+}
