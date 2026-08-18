@@ -107,3 +107,25 @@ function checkStatus() {
         result.innerHTML = "🟡 Status: Pending (Admin will update your order soon.)";
     }
 }
+let offerEnd = new Date().getTime() + (24 * 60 * 60 * 1000);
+
+setInterval(function () {
+  let now = new Date().getTime();
+  let distance = offerEnd - now;
+
+  if (distance <= 0) {
+    document.getElementById("countdown").innerHTML = "🔥 OFFER EXPIRED";
+    return;
+  }
+
+  let hours = Math.floor(distance / (1000 * 60 * 60));
+  let minutes = Math.floor(
+    (distance % (1000 * 60 * 60)) / (1000 * 60)
+  );
+  let seconds = Math.floor(
+    (distance % (1000 * 60)) / 1000
+  );
+
+  document.getElementById("countdown").innerHTML =
+    hours + "h : " + minutes + "m : " + seconds + "s";
+}, 1000);
