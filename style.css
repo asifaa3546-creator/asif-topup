@@ -646,3 +646,17 @@ font-weight:bold;
   font-weight: bold;
   margin: 15px 0;
 }
+.telegram-order {
+    display: inline-block;
+    background: #229ED9;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    margin: 10px;
+}
+
+.telegram-order:hover {
+    opacity: 0.9;
+}
