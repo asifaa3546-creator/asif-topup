@@ -660,3 +660,68 @@ font-weight:bold;
 .telegram-order:hover {
     opacity: 0.9;
 }
+.hero {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 15px;
+}
+
+.hero img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.floating-text {
+  position: absolute;
+  top: 18px;
+  left: 50%;
+  width: 92%;
+  transform: translate(-50%, -120px);
+  padding: 12px 10px;
+  text-align: center;
+
+  color: #fff;
+  font-size: 25px;
+  font-weight: 900;
+
+  background: rgba(0, 0, 0, 0.55);
+  border-radius: 12px;
+
+  text-shadow:
+    0 0 5px #fff,
+    0 0 12px #ff9800,
+    0 0 20px #ff6f00;
+
+  animation:
+    floatingText 1.8s ease-out forwards,
+    glowingText 1.5s ease-in-out 1.8s infinite alternate;
+}
+
+@keyframes floatingText {
+  from {
+    transform: translate(-50%, -120px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translate(-50%, 0);
+    opacity: 1;
+  }
+}
+
+@keyframes glowingText {
+  from {
+    text-shadow:
+      0 0 5px #fff,
+      0 0 10px #ff9800;
+  }
+
+  to {
+    text-shadow:
+      0 0 8px #fff,
+      0 0 18px #ff9800,
+      0 0 30px #ff4500;
+  }
+}
