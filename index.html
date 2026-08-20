@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ASIF TOPUP BD</title>
+<title>ASIF TOPUP BD | Premium Gaming Top-Up</title>
 
 <style>
 *{
@@ -14,288 +14,198 @@
 }
 
 body{
-  background:#070b12;
-  color:white;
+  background:#05070d;
+  color:#fff;
+  overflow-x:hidden;
 }
 
 header{
   padding:18px 15px;
   text-align:center;
-  background:linear-gradient(135deg,#111827,#07111f);
-  border-bottom:1px solid #26364d;
+  background:linear-gradient(135deg,#07111d,#101827);
+  border-bottom:1px solid #1f3347;
+  position:sticky;
+  top:0;
+  z-index:10;
 }
 
 .logo{
-  font-size:28px;
+  font-size:27px;
   font-weight:900;
   color:#00ff88;
-  text-shadow:0 0 15px #00ff88;
+  text-shadow:0 0 18px rgba(0,255,136,.7);
 }
 
-.subtitle{
-  color:#b8c2d1;
+.tagline{
+  color:#9ba9ba;
+  font-size:13px;
   margin-top:5px;
-  font-size:14px;
 }
 
 .hero{
   margin:15px;
-  padding:25px 15px;
-  border-radius:20px;
+  padding:28px 16px;
   text-align:center;
-  background:linear-gradient(145deg,#101827,#0a111d);
-  box-shadow:0 0 25px rgba(0,255,136,.12);
+  border-radius:24px;
+  background:radial-gradient(circle at top,#123329,#0a111c 55%,#060910);
+  border:1px solid #1c4738;
+  box-shadow:0 0 35px rgba(0,255,136,.12);
 }
 
 .hero img{
-  width:120px;
-  height:120px;
+  width:125px;
+  height:125px;
   object-fit:cover;
   border-radius:50%;
   border:3px solid #00ff88;
-  box-shadow:0 0 25px rgba(0,255,136,.5);
-  margin-bottom:15px;
+  box-shadow:0 0 30px rgba(0,255,136,.5);
 }
 
 .hero h1{
-  font-size:25px;
+  margin-top:16px;
+  font-size:27px;
   color:#00ff88;
 }
 
+.hero p{
+  color:#c4ceda;
+  margin-top:8px;
+  line-height:1.6;
+}
+
 .warning{
-  margin-top:12px;
+  margin-top:14px;
+  padding:12px;
+  border-radius:12px;
+  background:rgba(255,193,7,.08);
+  border:1px solid rgba(255,193,7,.3);
   color:#ffd166;
-  font-size:15px;
   font-weight:bold;
   line-height:1.7;
+}
+
+.title{
+  text-align:center;
+  margin:25px 0 15px;
+  color:#00ff88;
+  font-size:22px;
 }
 
 .games{
   display:grid;
   grid-template-columns:repeat(2,1fr);
-  gap:10px;
-  padding:15px;
+  gap:11px;
+  padding:0 15px;
 }
 
 .game{
-  background:#111927;
-  padding:15px 8px;
-  border-radius:14px;
+  padding:18px 8px;
   text-align:center;
-  border:1px solid #26364d;
+  border-radius:15px;
+  background:#0d1521;
+  border:1px solid #1c2c3d;
   font-weight:bold;
 }
 
-.section-title{
-  text-align:center;
-  margin:15px 0;
-  color:#00ff88;
-  font-size:22px;
+.order-box{
+  margin:15px;
+  padding:20px;
+  border-radius:20px;
+  background:#0c131f;
+  border:1px solid #1c2c3d;
 }
 
-.packages{
-  padding:0 15px 20px;
+label{
+  display:block;
+  margin:12px 0 7px;
+  color:#b9c4d1;
+  font-size:14px;
+}
+
+input,
+select{
+  width:100%;
+  padding:14px;
+  border-radius:10px;
+  border:1px solid #2a3b4e;
+  outline:none;
+  background:#070c14;
+  color:#fff;
+  font-size:15px;
+}
+
+input:focus,
+select:focus{
+  border-color:#00ff88;
 }
 
 .package{
-  background:linear-gradient(145deg,#111a28,#0c121d);
-  border:1px solid #26364d;
-  border-radius:16px;
+  margin:15px;
   padding:18px;
-  margin-bottom:12px;
+  border-radius:17px;
+  background:linear-gradient(145deg,#0e1724,#080d15);
+  border:1px solid #203246;
 }
 
 .package h3{
-  color:#fff;
   font-size:18px;
 }
 
 .price{
   color:#00ff88;
-  font-size:24px;
-  font-weight:bold;
-  margin:8px 0;
+  font-size:25px;
+  font-weight:900;
+  margin:8px 0 13px;
 }
 
-.old{
-  color:#777;
-  text-decoration:line-through;
-  font-size:14px;
-}
-
-.order{
+.btn{
   width:100%;
+  padding:14px;
   border:0;
-  padding:13px;
-  border-radius:10px;
-  background:#00c853;
-  color:white;
+  border-radius:11px;
+  background:linear-gradient(90deg,#00c853,#00ff88);
+  color:#00170b;
+  font-weight:900;
   font-size:16px;
-  font-weight:bold;
   cursor:pointer;
 }
 
-.order:active{
+.btn:active{
   transform:scale(.97);
 }
 
-.membership{
-  padding:0 15px 20px;
-}
+/* SUPPORT CENTER */
 
-.member{
-  background:#111927;
-  border:1px solid #26364d;
-  padding:18px;
-  border-radius:16px;
-  margin-bottom:12px;
-}
-
-footer{
+.support{
+  margin:20px 15px;
+  padding:22px 18px;
+  border-radius:20px;
+  background:linear-gradient(145deg,#101b2b,#080e18);
+  border:1px solid #25415a;
   text-align:center;
-  padding:25px 15px;
-  color:#8893a3;
-  background:#05080d;
-  font-size:13px;
+  box-shadow:0 0 25px rgba(34,158,217,.12);
 }
 
-.telegram{
+.support-icon{
+  font-size:42px;
+  margin-bottom:8px;
+}
+
+.support h2{
+  color:#29a9e8;
+  font-size:23px;
+  margin-bottom:8px;
+}
+
+.support p{
+  color:#aebaca;
+  font-size:14px;
+  line-height:1.7;
+}
+
+.support-user{
   display:inline-block;
-  margin-top:10px;
-  padding:11px 20px;
+  margin:14px 0;
+  padding:10px 16px;
   border-radius:10px;
-  background:#229ed9;
-  color:white;
-  text-decoration:none;
-  font-weight:bold;
-}
-</style>
-</head>
-
-<body>
-
-<header>
-  <div class="logo">ASIF TOPUP BD</div>
-  <div class="subtitle">Fast • Secure • Trusted Gaming Top-Up</div>
-</header>
-
-<section class="hero">
-
-  <!-- তোমার ছবি -->
-  <img src="images/file_00000000d9a081fa8d7f766b701654eb.png"
-       alt="ASIF TOPUP BD">
-
-  <h1>🎮 ASIF TOPUP BD</h1>
-
-  <div class="warning">
-    🙏 কষ্টের টাকা নষ্ট করবেন না ❤️<br>
-    বিশ্বস্তভাবে গেমিং টপ-আপ করুন।
-  </div>
-
-</section>
-
-<h2 class="section-title">🎮 আমাদের গেম</h2>
-
-<section class="games">
-  <div class="game">🔥 Free Fire</div>
-  <div class="game">🎯 PUBG Mobile</div>
-  <div class="game">⚔️ Mobile Legends</div>
-  <div class="game">💥 Blood Strike</div>
-</section>
-
-<h2 class="section-title">💎 Diamond Packages</h2>
-
-<section class="packages">
-
-  <div class="package">
-    <h3>💎 100 Diamonds</h3>
-    <div class="price">৳ 80</div>
-    <button class="order" onclick="order('100 Diamonds - ৳80')">
-      🟢 Order Now
-    </button>
-  </div>
-
-  <div class="package">
-    <h3>💎 310 Diamonds</h3>
-    <div class="price">৳ 220</div>
-    <button class="order" onclick="order('310 Diamonds - ৳220')">
-      🟢 Order Now
-    </button>
-  </div>
-
-  <div class="package">
-    <h3>💎 520 Diamonds</h3>
-    <div class="price">৳ 350</div>
-    <button class="order" onclick="order('520 Diamonds - ৳350')">
-      🟢 Order Now
-    </button>
-  </div>
-
-  <div class="package">
-    <h3>💎 1060 Diamonds</h3>
-    <div class="price">৳ 700</div>
-    <button class="order" onclick="order('1060 Diamonds - ৳700')">
-      🟢 Order Now
-    </button>
-  </div>
-
-</section>
-
-<h2 class="section-title">📅 Membership</h2>
-
-<section class="membership">
-
-  <div class="member">
-    <h3>📅 Weekly Membership</h3>
-    <div class="price">৳ 150</div>
-    <button class="order" onclick="order('Weekly Membership - ৳150')">
-      🟢 Order Now
-    </button>
-  </div>
-
-  <div class="member">
-    <h3>👑 Monthly Membership</h3>
-    <div class="old">৳ 780</div>
-    <div class="price">৳ 775</div>
-
-    <button class="order" onclick="order('Monthly Membership - ৳775')">
-      🟢 Order Now
-    </button>
-  </div>
-
-</section>
-
-<footer>
-
-  <div>© 2026 ASIF TOPUP BD</div>
-  <div>All Rights Reserved.</div>
-
-  <a class="telegram"
-     href="https://t.me/AsifTopupOfficial"
-     target="_blank">
-     📱 Contact on Telegram
-  </a>
-
-</footer>
-
-<script>
-
-function order(packageName){
-
-  const message =
-  "🎮 ASIF TOPUP BD%0A%0A" +
-  "📦 Package: " + packageName + "%0A" +
-  "👤 Player ID: %0A" +
-  "🎮 Game: %0A%0A" +
-  "আমি এই প্যাকেজটি অর্ডার করতে চাই।";
-
-  window.open(
-    "https://t.me/AsifTopupOfficial?text=" + message,
-    "_blank"
-  );
-}
-
-</script>
-
-</body>
-</htmlYT
+  background:#07152nde
