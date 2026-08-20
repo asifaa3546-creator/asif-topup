@@ -801,3 +801,146 @@ h1 {
   margin: 15px auto 0;
   border-radius: 10px;
 }
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 15px;
+  background: #050505;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+.offer-box {
+  max-width: 500px;
+  margin: auto;
+  padding: 18px;
+  text-align: center;
+  border-radius: 18px;
+  background: linear-gradient(135deg,#151515,#242424);
+  border: 2px solid #00ff88;
+  box-shadow: 0 0 20px rgba(0,255,136,.25);
+}
+
+.offer-box h1 {
+  margin: 0 0 12px;
+  color: #00ff88;
+}
+
+.offer-box p {
+  margin: 8px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.title {
+  text-align: center;
+  margin: 25px 0 18px;
+  color: #00ff88;
+}
+
+.packages {
+  width: 100%;
+  max-width: 500px;
+  margin: auto;
+}
+
+.package-card {
+  background: #111827;
+  border: 1px solid #374151;
+  border-radius: 18px;
+  padding: 18px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.package-card h2 {
+  margin: 5px 0 8px;
+}
+
+.package-card p {
+  color: #d1d5db;
+}
+
+.package-card h3 {
+  color: #00ff88;
+  font-size: 25px;
+  margin: 12px 0;
+}
+
+.package-card button,
+.order-form button {
+  width: 100%;
+  padding: 13px;
+  border: none;
+  border-radius: 10px;
+  background: #00c853;
+  color: white;
+  font-size: 17px;
+  font-weight: bold;
+}
+
+.bottom-image {
+  width: 100%;
+  max-width: 250px;
+  height: auto;
+  display: block;
+  margin: 15px auto 0;
+  border-radius: 10px;
+}
+
+
+/* ORDER POPUP */
+
+.order-box {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.85);
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  z-index: 9999;
+}
+
+.order-form {
+  width: 100%;
+  max-width: 400px;
+  background: #111827;
+  padding: 25px;
+  border-radius: 18px;
+  position: relative;
+  text-align: center;
+}
+
+.order-form input {
+  width: 100%;
+  padding: 13px;
+  margin: 8px 0;
+  border: 1px solid #374151;
+  border-radius: 10px;
+  background: #050505;
+  color: white;
+  font-size: 16px;
+}
+
+.order-form button {
+  margin-top: 10px;
+}
+
+.close {
+  position: absolute;
+  right: 15px;
+  top: 8px;
+  font-size: 30px;
+  cursor: pointer;
+  color: #ff4444;
+}
+
+#message {
+  margin-top: 15px;
+  color: #00ff88;
+  font-weight: bold;
+}
