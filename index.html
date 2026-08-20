@@ -1,1 +1,237 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ASIF TOPUP BD</title>
+  <link rel="stylesheet" href="style.css">
+</head>
 
+<body>
+
+<div class="offer-box">
+  <h1>🔥 SPECIAL OFFER 🔥</h1>
+  <p>👑 স্পেশাল মান্থলি মাত্র ৫০০ টাকা</p>
+  <p>⚡ স্পেশাল উইকলি মাত্র ১২০ টাকা</p>
+</div>
+
+<h2 class="title">💎 TOP UP PACKAGE 💎</h2>
+
+<div class="packages">
+
+  <div class="package-card">
+    <h2>👑 Monthly Membership</h2>
+    <p>Special Monthly</p>
+    <h3>৳500</h3>
+    <button onclick="openOrder('Monthly Membership',500)">BUY NOW</button>
+    <img src="images/file_000000007fdc81fa8845db22fb00cf12.png" class="bottom-image">
+  </div>
+
+  <div class="package-card">
+    <h2>🔥 Weekly Membership</h2>
+    <p>Special Weekly</p>
+    <h3>৳120</h3>
+    <button onclick="openOrder('Weekly Membership',120)">BUY NOW</button>
+    <img src="images/file_000000007fdc81fa8845db22fb00cf12.png" class="bottom-image">
+  </div>
+
+  <div class="package-card">
+    <h2>💎 100 Diamond</h2>
+    <p>100 Diamonds</p>
+    <h3>৳80</h3>
+    <button onclick="openOrder('100 Diamond',80)">BUY NOW</button>
+    <img src="images/file_000000007fdc81fa8845db22fb00cf12.png" class="bottom-image">
+  </div>
+
+  <div class="package-card">
+    <h2>💎 310 Diamond</h2>
+    <p>310 Diamonds</p>
+    <h3>৳240</h3>
+    <button onclick="openOrder('310 Diamond',240)">BUY NOW</button>
+    <img src="images/file_000000007fdc81fa8845db22fb00cf12.png" class="bottom-image">
+  </div>
+
+  <div class="package-card">
+    <h2>💎 520 Diamond</h2>
+    <p>520 Diamonds</p>
+    <h3>৳400</h3>
+    <button onclick="openOrder('520 Diamond',400)">BUY NOW</button>
+    <img src="images/file_000000007fdc81fa8845db22fb00cf12.png" class="bottom-image">
+  </div>
+
+  <div class="package-card">
+    <h2>💎 1060 Diamond</h2>
+    <p>1060 Diamonds</p>
+    <h3>৳800</h3>
+    <button onclick="openOrder('1060 Diamond',800)">BUY NOW</button>
+    <img src="images/file_000000007fdc81fa8845db22fb00cf12.png" class="bottom-image">
+  </div>
+
+  <div class="package-card">
+    <h2>💎 2180 Diamond</h2>
+    <p>2180 Diamonds</p>
+    <h3>৳1600</h3>
+    <button onclick="openOrder('2180 Diamond',1600)">BUY NOW</button>
+    <img src="images/file_000000007fdc81fa8845db22fb00cf12.png" class="bottom-image">
+  </div>
+
+  <div class="package-card">
+    <h2>💎 5600 Diamond</h2>
+    <p>5600 Diamonds</p>
+    <h3>৳4000</h3>
+    <button onclick="openOrder('5600 Diamond',4000)">BUY NOW</button>
+    <img src="images/file_000000007fdc81fa8845db22fb00cf12.png" class="bottom-image">
+  </div>
+
+</div>
+
+
+<!-- ORDER POPUP -->
+
+<div id="orderBox" class="order-box">
+
+  <div class="order-form">
+
+    <span class="close" onclick="closeOrder()">×</span>
+
+    <h2>🎮 Order করুন</h2>
+
+    <p id="selectedPackage"></p>
+
+    <input
+      type="text"
+      id="playerId"
+      placeholder="আপনার Player ID লিখুন"
+      required
+    >
+
+    <input
+      type="text"
+      id="playerName"
+      placeholder="Player Name (Optional)"
+    >
+
+    <button onclick="sendOrder()">
+      📩 ORDER CONFIRM
+    </button>
+
+    <p id="message"></p>
+
+  </div>
+
+</div>
+
+
+<script>
+
+let selectedPackage = "";
+let selectedPrice = 0;
+
+
+/* BUY NOW */
+
+function openOrder(packageName, price) {
+
+  selectedPackage = packageName;
+  selectedPrice = price;
+
+  document.getElementById("selectedPackage").innerHTML =
+    "📦 Package: <b>" + packageName +
+    "</b><br>💰 Price: <b>৳" + price + "</b>";
+
+  document.getElementById("orderBox").style.display = "flex";
+
+}
+
+
+/* CLOSE */
+
+function closeOrder() {
+  document.getElementById("orderBox").style.display = "none";
+}
+
+
+/* SEND ORDER */
+
+async function sendOrder() {
+
+  const playerId =
+    document.getElementById("playerId").value.trim();
+
+  const playerName =
+    document.getElementById("playerName").value.trim();
+
+  const message =
+    document.getElementById("message");
+
+  if (!playerId) {
+
+    message.innerHTML =
+      "⚠️ আগে Player ID দিন!";
+
+    return;
+  }
+
+
+  message.innerHTML = "⏳ অর্ডার পাঠানো হচ্ছে...";
+
+
+  try {
+
+    const response = await fetch(
+      "YOUR_CLOUDFLARE_WORKER_URL",
+      {
+        method: "POST",
+
+        headers: {
+          "Content-Type": "application/json"
+        },
+
+        body: JSON.stringify({
+
+          package: selectedPackage,
+
+          price: selectedPrice,
+
+          playerId: playerId,
+
+          playerName: playerName
+
+        })
+
+      }
+    );
+
+
+    const result = await response.json();
+
+
+    if (result.success) {
+
+      message.innerHTML =
+        "✅ অর্ডার সফলভাবে পাঠানো হয়েছে!";
+
+      document.getElementById("playerId").value = "";
+
+      document.getElementById("playerName").value = "";
+
+    } else {
+
+      message.innerHTML =
+        "❌ অর্ডার পাঠানো যায়নি।";
+
+    }
+
+  } catch (error) {
+
+    message.innerHTML =
+      "❌ Server connection error!";
+
+  }
+
+}
+
+</script>
+
+</body>
+</html>
