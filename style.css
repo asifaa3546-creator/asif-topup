@@ -725,3 +725,79 @@ font-weight:bold;
       0 0 30px #ff4500;
   }
 }
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 20px;
+  background: #050505;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+  text-align: center;
+  color: #00ff88;
+  margin-bottom: 25px;
+}
+
+.packages {
+  width: 100%;
+  max-width: 500px;
+  margin: auto;
+}
+
+.package-card {
+  background: #111827;
+  border: 1px solid #374151;
+  border-radius: 18px;
+  padding: 18px;
+  margin-bottom: 22px;
+  text-align: center;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+}
+
+.package-card h2 {
+  margin: 5px 0 10px;
+  color: #ffffff;
+}
+
+.package-card p {
+  color: #d1d5db;
+}
+
+.package-card h3 {
+  color: #00ff88;
+  font-size: 24px;
+  margin: 12px 0;
+}
+
+.package-card button {
+  width: 100%;
+  padding: 13px;
+  border: none;
+  border-radius: 10px;
+  background: #00c853;
+  color: white;
+  font-size: 17px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.package-card button:active {
+  transform: scale(0.97);
+}
+
+
+/* ⭐ সব প্যাকেজের নিচের একই ছবি */
+
+.bottom-image {
+  width: 100%;
+  max-width: 250px;
+  height: auto;
+  display: block;
+  margin: 15px auto 0;
+  border-radius: 10px;
+}
