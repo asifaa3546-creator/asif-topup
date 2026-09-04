@@ -1,1 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>ASIF TOPUP BD - Offers</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+    background:#080b12;
+    color:#fff;
+    min-height:100vh;
+}
+
+/* HEADER */
+.header{
+    background:linear-gradient(135deg,#111827,#090d16);
+    padding:20px 30px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    border-bottom:1px solid #202838;
+    position:sticky;
+    top:0;
+    z-index:100;
+}
+
+.logo-area{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.logo-area img{
+    width:48px;
+    height:48px;
+    object-fit:contain;
+    border-radius:12px;
+}
+
+.logo-text{
+    font-size:21px;
+    font-weight:800;
+    letter-spacing:.5px;
+}
+
+.logo-text span{
+    color:#00e5ff;
+}
+
+.menu-btn{
+    background:#151d2b;
+    border:1px solid #293449;
+    color:#fff;
+    padding:10px 15px;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:15px;
+}
+
+/* HERO */
+.hero{
+    text-align:center;
+    padding:45px 20px 30px;
+}
+
+.hero h1{
+    font-size:34px;
+    margin-bottom:10px;
+}
+
+.hero h1 span{
+    color:#00e5ff;
+}
+
+.hero p{
+    color:#9ca8bb;
+    font-size:15px;
+}
+
+/* OFFER SECTION */
+.offer-section{
+    max-width:1200px;
+    margin:auto;
+    padding:25px 20px 60px;
+}
+
+.section-title{
+    font-size:24px;
+    margin-bottom:25px;
+    font-weight:800;
+}
+
+.section-title span{
+    color:#00e5ff;
+}
+
+/* 3 COLUMN */
+.offer-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+/* CARD */
+.offer-card{
+    background:linear-gradient(145deg,#111827,#0c111b);
+    border:1px solid #263248;
+    border-radius:18px;
+    padding:22px;
+    cursor:pointer;
+    transition:.3s;
+    position:relative;
+    overflow:hidden;
+}
+
+.offer-card:hover{
+    transform:translateY(-6px);
+    border-color:#00e5ff;
+    box-shadow:0 10px 35px rgba(0,229,255,.12);
+}
+
+.offer-card::before{
+    content:"";
+    position:absolute;
+    width:100px;
+    height:100px;
+    background:#00e5ff;
+    filter:blur(80px);
+    opacity:.08;
+    right:-30px;
+    top:-30px;
+}
+
+.offer-icon{
+    width:55px;
+    height:55px;
+    border-radius:14px;
+    background:#162333;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:27px;
+    margin-bottom:18px;
+}
+
+.offer-card h3{
+    font-size:19px;
+    margin-bottom:10px;
+}
+
+.offer-card p{
+    color:#8e9bad;
+    font-size:13px;
+    line-height:1.5;
+    min-height:40px;
+}
+
+.price{
+    font-size:25px;
+    font-weight:800;
+    margin-top:18px;
+    color:#00e5ff;
+}
+
+.price small{
+    font-size:13px;
+    color:#8490a3;
+    font-weight:normal;
+}
+
+.view-btn{
+    width:100%;
+    margin-top:18px;
+    padding:12px;
+    border:none;
+    border-radius:10px;
+    background:#00e5ff;
+    color:#001014;
+    font-weight:800;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.view-btn:hover{
+    background:#fff;
+}
+
+/* MODAL */
+.modal{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.78);
+    backdrop-filter:blur(7px);
+    z-index:999;
+    padding:20px;
+    overflow-y:auto;
+}
+
+.modal-box{
+    max-width:500px;
+    margin:50px auto;
+    background:#101722;
+    border:1px solid #2b394e;
+    border-radius:20px;
+    padding:25px;
+    position:relative;
+    box-shadow:0 20px 70px rgba(0,0,0,.5);
+}
+
+.close{
+    position:absolute;
+    right:18px;
+    top:15px;
+    width:35px;
+    height:35px;
+    border:none;
+    border-radius:50%;
+    background:#1c2635;
+    color:#fff;
+    font-size:20px;
+    cursor:pointer;
+}
+
+.detail-icon{
+    width:70px;
+    height:70px;
+    border-radius:18px;
+    background:#162333;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:35px;
+    margin-bottom:18px;
+}
+
+.modal-box h2{
+    font-size:25px;
+    margin-bottom:8px;
+}
+
+.detail-price{
+    color:#00e5ff;
+    font-size:30px;
+    font-weight:900;
+    margin:15px 0;
+}
+
+.details{
+    background:#0a1019;
+    border:1px solid #202c3d;
+    border-radius:13px;
+    padding:16px;
+    margin-top:15px;
+}
+
+.details h4{
+    margin-bottom:12px;
+}
+
+.details li{
+    list-style:none;
+    color:#aab4c3;
+    font-size:14px;
+    padding:7px 0;
+}
+
+.details li::before{
+    content:"✓";
+    color:#00e5ff;
+    font-weight:bold;
+    margin-right:8px;
+}
+
+.order-btn{
+    width:100%;
+    margin-top:20px;
+    padding:14px;
+    border:none;
+    border-radius:12px;
+    background:#00e5ff;
+    color:#001014;
+    font-weight:900;
+    font-size:16px;
+    cursor:pointer;
+}
+
+.order-btn:hover{
+    background:#fff;
+}
+
+/* FOOTER */
+.footer{
+    text-align:center;
+    padding:25px;
+    color:#687487;
+    border-top:1px solid #1d2736;
+    font-size:13px;
+}
+
+/* MOBILE */
+@media(max-width:850px){
+    .offer-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+@media(max-width:550px){
+    .header{
+        padding:15px;
+    }
+
+    .logo-text{
+        font-size:17px;
+    }
+
+    .logo-area img{
+        width:40px;
+        height:40px;
+    }
+
+    .hero{
+        padding:30px 15px 20px;
+    }
+
+    .hero h1{
+        font-size:27px;
+    }
+
+    .offer-section{
+        padding:20px 12px 45px;
+    }
+
+    .offer-grid{
+        grid-template-columns:repeat(2,1fr);
+        gap:12px;
+    }
+
+    .offer-card{
+        padding:15px;
+        border-radius:14px;
+    }
+
+    .offer-icon{
+        width:45px;
+        height:45px;
+        font-size:22px;
+    }
+
+    .offer-card h3{
+        font-size:15px;
+    }
+
+    .offer-card p{
+        font-size:11px;
+    }
+
+    .price{
+        font-size:20px;
+    }
+
+    .view-btn{
+        padding:10px 5px;
+        font-size:12px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header class="header">
+
+    <div class="logo-area">
+
+        <!-- তোমার Logo -->
+        <img src="images/file_00000000ef388207b433be64d14c006d.png"
+             alt="ASIF TOPUP BD">
+
+        <div class="logo-text">
+            ASIF <span>TOPUP BD</span>
+        </div>
+
+    </div>
+
+    <button class="menu-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+        Home
+    </button>
+
+</header>
+
+
+<!-- HERO -->
+<section class="hero">
+
+    <h1>Special <span>Offers</span></h1>
+
+    <p>
+        Choose your favorite offer and get instant service.
+    </p>
+
+</section>
+
+
+<!-- OFFERS -->
+<section class="offer-section">
+
+    <div class="section-title">
+        Available <span>Offers</span>
+    </div>
+
+    <div class="offer-grid">
+
+        <!-- WEEKLY -->
+        <div class="offer-card" onclick="openOffer(0)">
+            <div class="offer-icon">🔥</div>
+
+            <h3>Weekly Offer</h3>
+
+            <p>
+                Get your weekly offer quickly and easily.
+            </p>
+
+            <div class="price">
+                ৳120 <small>/ Weekly</small>
+            </div>
+
+            <button class="view-btn">
+                View Details
+            </button>
+        </div>
+
+
+        <!-- MONTHLY -->
+        <div class="offer-card" onclick="openOffer(1)">
+            <div class="offer-icon">💎</div>
+
+            <h3>Monthly Offer</h3>
+
+            <p>
+                Enjoy premium monthly benefits at low price.
+            </p>
+
+            <div class="price">
+                ৳500 <small>/ Monthly</small>
+            </div>
+
+            <button class="view-btn">
+                View Details
+            </button>
+        </div>
+
+
+        <!-- PREMIUM -->
+        <div class="offer-card" onclick="openOffer(2)">
+            <div class="offer-icon">👑</div>
+
+            <h3>Premium User Offer</h3>
+
+            <p>
+                Special offer specially made for premium users.
+            </p>
+
+            <div class="price">
+                ৳300
+            </div>
+
+            <button class="view-btn">
+                View Details
+            </button>
+        </div>
+
+
+        <!-- ID CODE -->
+        <div class="offer-card" onclick="openOffer(3)">
+            <div class="offer-icon">🆔</div>
+
+            <h3>ID Code TopUp</h3>
+
+            <p>
+                Fast and easy ID Code based top up service.
+            </p>
+
+            <div class="price">
+                ৳100
+            </div>
+
+            <button class="view-btn">
+                View Details
+            </button>
+        </div>
+
+
+        <!-- LEVEL UP -->
+        <div class="offer-card" onclick="openOffer(4)">
+            <div class="offer-icon">🚀</div>
+
+            <h3>New Level Up Pass</h3>
+
+            <p>
+                Level up your account with this special pass.
+            </p>
+
+            <div class="price">
+                ৳150
+            </div>
+
+            <button class="view-btn">
+                View Details
+            </button>
+        </div>
+
+
+        <!-- WEEKLY LITE -->
+        <div class="offer-card" onclick="openOffer(5)">
+            <div class="offer-icon">⚡</div>
+
+            <h3>Weekly Lite</h3>
+
+            <p>
+                Weekly Lite offer for BD Server users.
+            </p>
+
+            <div class="price">
+                ৳80 <small>/ BD Server</small>
+            </div>
+
+            <button class="view-btn">
+                View Details
+            </button>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- DETAILS MODAL -->
+<div class="modal" id="offerModal">
+
+    <div class="modal-box">
+
+        <button class="close" onclick="closeOffer()">×</button>
+
+        <div class="detail-icon" id="detailIcon">
+            🔥
+        </div>
+
+        <h2 id="detailTitle">
+            Weekly Offer
+        </h2>
+
+        <div class="detail-price" id="detailPrice">
+            ৳120
+        </div>
+
+        <div class="details">
+
+            <h4>Offer Details</h4>
+
+            <ul id="detailList">
+                <li>Fast Delivery</li>
+                <li>Secure Service</li>
+                <li>24/7 Support</li>
+                <li>Easy Ordering</li>
+            </ul>
+
+        </div>
+
+        <button class="order-btn" onclick="orderOffer()">
+            Order Now
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- FOOTER -->
+<footer class="footer">
+    © 2026 ASIF TOPUP BD. All Rights Reserved.
+</footer>
+
+
+<script>
+
+const offers = [
+
+    {
+        title:"Weekly Offer",
+        price:"৳120",
+        icon:"🔥",
+        details:[
+            "Weekly Offer Service",
+            "Fast Delivery",
+            "Secure Order",
+            "24/7 Support"
+        ]
+    },
+
+    {
+        title:"Monthly Offer",
+        price:"৳500",
+        icon:"💎",
+        details:[
+            "Monthly Offer Service",
+            "Fast Delivery",
+            "Secure Order",
+            "24/7 Support"
+        ]
+    },
+
+    {
+        title:"Premium User Offer",
+        price:"৳300",
+        icon:"👑",
+        details:[
+            "Premium User Special Offer",
+            "Priority Service",
+            "Fast Delivery",
+            "24/7 Support"
+        ]
+    },
+
+    {
+        title:"ID Code TopUp",
+        price:"৳100",
+        icon:"🆔",
+        details:[
+            "ID Code Based TopUp",
+            "Quick Processing",
+            "Secure Service",
+            "Instant Support"
+        ]
+    },
+
+    {
+        title:"New Level Up Pass",
+        price:"৳150",
+        icon:"🚀",
+        details:[
+            "New Level Up Pass",
+            "Fast Processing",
+            "Secure Service",
+            "24/7 Support"
+        ]
+    },
+
+    {
+        title:"Weekly Lite (BD Server)",
+        price:"৳80",
+        icon:"⚡",
+        details:[
+            "Weekly Lite Package",
+            "BD Server Supported",
+            "Fast Delivery",
+            "Secure Service"
+        ]
+    }
+
+];
+
+
+let selectedOffer = null;
+
+
+/* OPEN DETAILS */
+function openOffer(index){
+
+    selectedOffer = offers[index];
+
+    document.getElementById("detailIcon").innerText =
+        selectedOffer.icon;
+
+    document.getElementById("detailTitle").innerText =
+        selectedOffer.title;
+
+    document.getElementById("detailPrice").innerText =
+        selectedOffer.price;
+
+    const list =
+        document.getElementById("detailList");
+
+    list.innerHTML = "";
+
+    selectedOffer.details.forEach(item => {
+
+        const li = document.createElement("li");
+
+        li.innerText = item;
+
+        list.appendChild(li);
+
+    });
+
+    document.getElementById("offerModal").style.display =
+        "block";
+
+    document.body.style.overflow =
+        "hidden";
+}
+
+
+/* CLOSE DETAILS */
+function closeOffer(){
+
+    document.getElementById("offerModal").style.display =
+        "none";
+
+    document.body.style.overflow =
+        "auto";
+}
+
+
+/* ORDER */
+function orderOffer(){
+
+    if(!selectedOffer) return;
+
+    /*
+       এখানে তোমার Telegram/WhatsApp order link
+       পরে বসানো যাবে।
+    */
+
+    const message =
+        "আমি " +
+        selectedOffer.title +
+        " নিতে চাই। দাম: " +
+        selectedOffer.price;
+
+    alert(
+        "Order Selected!\n\n" +
+        message +
+        "\n\nOrder system এখানে পরে যুক্ত করা যাবে।"
+    );
+}
+
+
+/* MODAL OUTSIDE CLICK */
+window.onclick = function(event){
+
+    const modal =
+        document.getElementById("offerModal");
+
+    if(event.target === modal){
+        closeOffer();
+    }
+
+};
+
+</script>
+
+</body>
+      </html>
