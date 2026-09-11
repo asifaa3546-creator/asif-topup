@@ -502,8 +502,8 @@ function renderOrders(){
     return;
   }
   list.innerHTML=orders.map(o=>{
-    const statusClass=o.status==="Completed"?"status-completed":"status-processing";
-    const statusText=o.status==="Completed"?"✓ Completed":"◷ Processing";
+    const statusClass=o.status==="Completed"?"status-completed":
+    const statusText=o.status==="Completed"?"✓ Completed":"◷ 
     return `<div class="order-history-card">
       <div class="order-history-top"><b>Order ${o.id}</b><span class="${statusClass}">${statusText}</span></div>
       <div class="order-history-date">
@@ -541,7 +541,7 @@ function sendTelegram(){
 
   // My Orders-এ শুধু প্রয়োজনীয় অর্ডার ডিটেইলস সেভ হবে।
   // Payment Method ও Transaction ID এখানে দেখানো হবে না।
-  saveOrder();
+  saveOrder();status:"Completed"
 
   const message=`🎮 ASIF TOPUP BD
 
