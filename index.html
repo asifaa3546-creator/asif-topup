@@ -1,1 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>ASIF TOPUP BD</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Georgia,"Times New Roman",serif;background:#f3f7ff;color:#17202a}
+.header{height:120px;background:#fff;display:flex;align-items:center;justify-content:space-between;padding:15px 28px;border-bottom:1px solid #ddd;position:sticky;top:0;z-index:10}
+.logo{display:flex;align-items:center;gap:10px;font-family:Arial,sans-serif;font-weight:900;font-size:25px}
+.logo img{width:64px;height:64px;object-fit:contain}
+.logo b{color:#111}.logo span{color:#12a83a}
+.wallet{background:#087b16;color:#fff;border-radius:35px;padding:15px 25px;font-family:Arial,sans-serif;font-weight:bold}
+.hero{text-align:center;padding:18px 12px 12px}
+.hero h1{font-size:32px;color:#12395f}
+.grid{width:94%;max-width:1000px;margin:0 auto 35px;display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.card{background:#fff;border:1px solid #d5dbe2;border-bottom:3px solid #26883a;border-radius:14px;overflow:hidden;box-shadow:0 2px 5px #00000010;cursor:pointer;transition:.2s}
+.card:hover{transform:translateY(-3px)}
+.card img{width:100%;aspect-ratio:1/1;object-fit:cover;display:block}
+.card-name{text-align:center;padding:18px 7px;font-size:19px;line-height:1.25;min-height:76px;font-weight:bold}
+.section{font-size:30px;text-align:center;color:#12395f;margin:20px 0 25px;font-weight:bold}
+.modal{display:none;position:fixed;inset:0;background:#0009;z-index:50;padding:15px;overflow:auto}
+.box{background:#fff;max-width:650px;margin:25px auto;border-radius:18px;padding:22px;position:relative}
+.close{position:absolute;right:12px;top:10px;border:0;background:#e8edf2;border-radius:50%;width:38px;height:38px;font-size:24px}
+.detail-img{width:150px;height:150px;display:block;margin:5px auto 15px;object-fit:cover;border-radius:15px}
+.box h2{text-align:center;font-size:27px;color:#12395f}
+.price{text-align:center;color:#e8751a;font-size:27px;font-weight:bold;margin:12px}
+.info{background:#f5f8fb;border-radius:12px;padding:15px;margin-top:12px}
+.info li{list-style:none;padding:7px 0;font-family:Arial,sans-serif}
+.info li:before{content:"✓";color:#087b16;font-weight:bold;margin-right:8px}
+.order{width:100%;border:0;border-radius:12px;padding:15px;background:#087b16;color:#fff;font-size:18px;font-weight:bold;margin-top:18px}
+.recharge-title{font-size:24px;margin:10px 0 15px}
+.recharge{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.r{border:1px solid #d7dce2;border-radius:8px;background:#fff;padding:17px 12px;display:flex;justify-content:space-between;align-items:center;font-family:Arial,sans-serif;font-weight:bold}
+.radio{width:26px;height:26px;border-radius:50%;background:#d9dde5;display:inline-block;margin-right:9px;vertical-align:middle}
+.r .tk{color:#ed6f1b}
+.note{text-align:center;color:#666;font-family:Arial,sans-serif;font-size:13px;margin-top:12px}
+@media(max-width:700px){
+.header{height:95px;padding:10px 12px}.logo{font-size:18px}.logo img{width:48px;height:48px}.wallet{padding:11px 15px}
+.grid{width:94%;gap:12px}.card-name{font-size:16px;padding:13px 4px;min-height:65px}
+.section{font-size:27px}.box{margin:10px auto;padding:16px}.detail-img{width:125px;height:125px}
+}
+@media(max-width:430px){.grid{gap:10px}.card-name{font-size:14px}.wallet{font-size:13px;padding:10px}.recharge{gap:8px}.r{font-size:13px;padding:13px 8px}}
+</style>
+</head>
+<body>
 
+<header class="header">
+  <div class="logo">
+    <img src="images/file_00000000ef388207b433be64d14c006d.png" alt="ASIF TOPUP BD">
+    <div><b>ASIF</b><span> TOPUP BD</span></div>
+  </div>
+  <div class="wallet">▣ ৳0</div>
+</header>
+
+<section class="hero"><h1>Special Offers</h1></section>
+
+<div class="grid" id="topOffers"></div>
+
+<div class="section">FF GAME TOPUP</div>
+<div class="grid" id="gameOffers"></div>
+
+<div class="modal" id="modal">
+ <div class="box">
+  <button class="close" onclick="closeModal()">×</button>
+  <img class="detail-img" id="dimg">
+  <h2 id="dtitle"></h2>
+  <div class="price" id="dprice"></div>
+  <div id="normalDetails">
+   <div class="info"><ul id="dlist"></ul></div>
+   <button class="order" onclick="orderNow()">Order Now</button>
+  </div>
+  <div id="idDetails" style="display:none">
+   <div class="recharge-title"><b>1</b> Select Recharge</div>
+   <div class="recharge" id="recharge"></div>
+   <div class="note">একটি প্যাকেজ সিলেক্ট করে Order Now চাপুন</div>
+   <button class="order" onclick="orderNow()">Order Now</button>
+  </div>
+ </div>
+</div>
+
+<script>
+const base="images/";
+const offers=[
+ {name:"Weekly Offer",price:"৳120",img:"weekly-offer.png",top:true},
+ {name:"Monthly Offer",price:"৳500",img:"monthly-offer.png",top:true},
+ {name:"Premium User Offer",price:"৳300",img:"premium-user.png",top:true},
+ {name:"Weekly Live",price:"৳50",img:"weekly-offer.png",top:true},
+ {name:"ID Code TopUp",price:"৳100",img:"id-code-topup.png",id:true},
+ {name:"New Level Up Pass",price:"৳450",img:"level-up-pass.png"},
+ {name:"Weekly Lite (BD Server)",price:"৳40",img:"weekly-lite.png"},
+ {name:"Weekly/Monthly Offer",price:"Contact for price",img:"weekly-monthly.png"},
+ {name:"Indonesia Server (UID)",price:"Contact for price",img:"indonesia-uid.png"},
+ {name:"FF ID Like",price:"Contact for price",img:"ff-id-like.png"}
+];
+
+const recharge=[
+["Weekly","154 TK"],["Monthly","770 TK"],["25 Diamond","20 TK"],["50 Diamond","35 TK"],
+["115 Diamond","77 TK"],["240 Diamond","154 TK"],["355 Diamond","230 TK"],["505 Diamond","328 TK"],
+["610 Diamond","380 TK"],["850 Diamond","535 TK"],["1090 Diamond","690 TK"],["1240 Diamond","780 TK"],
+["2530 Diamond","1550 TK"],["5060 Diamond","3100 TK"],["7590 Diamond","4650 TK"],["10120 Diamond","Price unavailable"]
+];
+
+let selected=null;
+
+function makeCard(o,i){
+ return `<div class="card" onclick="openOffer(${i})"><img src="${base+o.img}" alt="${o.name}"><div class="card-name">${o.name}</div></div>`;
+}
+document.getElementById("topOffers").innerHTML=offers.filter(x=>x.top).map((o,i)=>makeCard(o,offers.indexOf(o))).join("");
+document.getElementById("gameOffers").innerHTML=offers.filter(x=>!x.top).map((o,i)=>makeCard(o,offers.indexOf(o))).join("");
+
+function openOffer(i){
+ selected=offers[i];
+ document.getElementById("modal").style.display="block";
+ document.getElementById("dimg").src=base+selected.img;
+ document.getElementById("dtitle").textContent=selected.name;
+ document.getElementById("dprice").textContent=selected.price;
+ document.getElementById("normalDetails").style.display=selected.id?"none":"block";
+ document.getElementById("idDetails").style.display=selected.id?"block":"none";
+ if(selected.id){
+  document.getElementById("recharge").innerHTML=recharge.map((r,n)=>
+   `<div class="r" onclick="selectRecharge(this,'${r[0]} - ${r[1]}')"><span><i class="radio"></i>${r[0]}</span><span class="tk">${r[1]}</span></div>`
+  ).join("");
+ }else{
+  document.getElementById("dlist").innerHTML=[
+   "দ্রুত ও নিরাপদ ডেলিভারি","অর্ডার প্রসেসিং","২৪/৭ সাপোর্ট","সহজ অর্ডার সিস্টেম"
+  ].map(x=>`<li>${x}</li>`).join("");
+ }
+ document.body.style.overflow="hidden";
+}
+function selectRecharge(el,val){
+ document.querySelectorAll(".r").forEach(x=>x.style.borderColor="#d7dce2");
+ el.style.borderColor="#087b16";
+ selected.selectedRecharge=val;
+}
+function closeModal(){document.getElementById("modal").style.display="none";document.body.style.overflow="auto";}
+function orderNow(){
+ let text=selected.name+" - "+selected.price+(selected.selectedRecharge?" | "+selected.selectedRecharge:"");
+ const tg="https://t.me/AsifTopupOfficial";
+ if(confirm("Order করতে Telegram-এ যাবেন?")){
+   window.open(tg,"_blank");
+ }
+}
+window.onclick=e=>{if(e.target.id==="modal")closeModal()};
+</script>
+</body>
+</html>
