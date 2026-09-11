@@ -1,1 +1,1330 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>ASIF TOPUP BD</title>
 
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+font-family:Georgia,"Times New Roman",serif;
+background:#f3f7ff;
+color:#17202a
+}
+
+.header{
+height:120px;
+background:#fff;
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:15px 28px;
+border-bottom:1px solid #ddd;
+position:sticky;
+top:0;
+z-index:10
+}
+
+.logo{
+display:flex;
+align-items:center;
+gap:10px;
+font-family:Arial,sans-serif;
+font-weight:900;
+font-size:25px
+}
+
+.logo img{
+width:64px;
+height:64px;
+object-fit:contain
+}
+
+.logo b{color:#111}
+.logo span{color:#12a83a}
+
+.wallet{
+background:#087b16;
+color:#fff;
+border-radius:35px;
+padding:15px 25px;
+font-family:Arial,sans-serif;
+font-weight:bold
+}
+
+.hero{
+text-align:center;
+padding:18px 12px 12px
+}
+
+.hero h1{
+font-size:32px;
+color:#12395f
+}
+
+.grid{
+width:94%;
+max-width:1000px;
+margin:0 auto 35px;
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:28px
+}
+
+.card{
+background:#fff;
+border:1px solid #d5dbe2;
+border-bottom:3px solid #26883a;
+border-radius:14px;
+overflow:hidden;
+box-shadow:0 2px 5px #00000010;
+cursor:pointer;
+transition:.2s
+}
+
+.card:hover{
+transform:translateY(-3px)
+}
+
+.card img{
+width:100%;
+aspect-ratio:1/1;
+object-fit:cover;
+display:block
+}
+
+.card-name{
+text-align:center;
+padding:18px 7px;
+font-size:19px;
+line-height:1.25;
+min-height:76px;
+font-weight:bold
+}
+
+.section{
+font-size:30px;
+text-align:center;
+color:#12395f;
+margin:20px 0 25px;
+font-weight:bold
+}
+
+/* OLD DETAIL */
+.modal{
+display:none;
+position:fixed;
+inset:0;
+background:#0009;
+z-index:50;
+padding:15px;
+overflow:auto
+}
+
+.box{
+background:#fff;
+max-width:650px;
+margin:25px auto;
+border-radius:18px;
+padding:22px;
+position:relative
+}
+
+.close{
+position:absolute;
+right:12px;
+top:10px;
+border:0;
+background:#e8edf2;
+border-radius:50%;
+width:38px;
+height:38px;
+font-size:24px
+}
+
+.detail-img{
+width:150px;
+height:150px;
+display:block;
+margin:5px auto 15px;
+object-fit:cover;
+border-radius:15px
+}
+
+.box h2{
+text-align:center;
+font-size:27px;
+color:#12395f
+}
+
+.price{
+text-align:center;
+color:#e8751a;
+font-size:27px;
+font-weight:bold;
+margin:12px
+}
+
+.info{
+background:#f5f8fb;
+border-radius:12px;
+padding:15px;
+margin-top:12px
+}
+
+.info li{
+list-style:none;
+padding:7px 0;
+font-family:Arial,sans-serif
+}
+
+.info li:before{
+content:"✓";
+color:#087b16;
+font-weight:bold;
+margin-right:8px
+}
+
+.order{
+width:100%;
+border:0;
+border-radius:12px;
+padding:15px;
+background:#087b16;
+color:#fff;
+font-size:18px;
+font-weight:bold;
+margin-top:18px
+}
+
+.recharge-title{
+font-size:24px;
+margin:10px 0 15px
+}
+
+.recharge{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:12px
+}
+
+.r{
+border:1px solid #d7dce2;
+border-radius:8px;
+background:#fff;
+padding:17px 12px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+font-family:Arial,sans-serif;
+font-weight:bold
+}
+
+.radio{
+width:26px;
+height:26px;
+border-radius:50%;
+background:#d9dde5;
+display:inline-block;
+margin-right:9px;
+vertical-align:middle
+}
+
+.r .tk{
+color:#ed6f1b
+}
+
+.note{
+text-align:center;
+color:#666;
+font-family:Arial,sans-serif;
+font-size:13px;
+margin-top:12px
+}
+
+
+/* =========================
+   PAYMENT PAGE
+========================= */
+
+#paymentPage{
+display:none;
+position:fixed;
+inset:0;
+background:#f3f7ff;
+z-index:100;
+overflow:auto
+}
+
+.pay-wrap{
+max-width:650px;
+margin:auto;
+padding:15px;
+padding-bottom:40px
+}
+
+.pay-top{
+background:#fff;
+border-radius:15px;
+padding:15px;
+display:flex;
+align-items:center;
+gap:12px;
+margin-bottom:12px;
+box-shadow:0 2px 6px #0001
+}
+
+.pay-back{
+border:0;
+background:#087b16;
+color:#fff;
+width:42px;
+height:42px;
+border-radius:50%;
+font-size:22px
+}
+
+.pay-top h2{
+font-family:Arial,sans-serif;
+font-size:20px
+}
+
+.pay-card{
+background:#fff;
+border-radius:18px;
+overflow:hidden;
+box-shadow:0 2px 8px #0001;
+margin-bottom:14px
+}
+
+.pay-logo{
+text-align:center;
+padding:18px;
+border-bottom:1px solid #eee
+}
+
+.pay-logo img{
+width:100px;
+height:70px;
+object-fit:contain
+}
+
+.auto-pay{
+padding:18px;
+font-family:Arial,sans-serif;
+font-size:20px;
+font-weight:bold;
+color:#62738b
+}
+
+.amount-box{
+margin:0 15px 15px;
+padding:20px;
+border-radius:14px;
+background:#f5f8fb;
+font-family:Arial,sans-serif;
+font-size:28px;
+font-weight:bold;
+color:#34465b;
+text-align:center
+}
+
+.method-title{
+padding:15px;
+font-family:Arial,sans-serif;
+font-weight:bold;
+font-size:18px
+}
+
+.methods{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:10px;
+padding:0 15px 15px
+}
+
+.method{
+border:2px solid #ddd;
+border-radius:12px;
+padding:14px;
+text-align:center;
+font-family:Arial,sans-serif;
+font-weight:bold;
+cursor:pointer
+}
+
+.method.active{
+border-color:#087b16;
+background:#effaf1
+}
+
+.method small{
+display:block;
+margin-top:6px;
+color:#555
+}
+
+.instructions{
+margin:0 15px 15px;
+background:#d21f70;
+color:#fff;
+border-radius:15px;
+padding:18px;
+font-family:Arial,sans-serif
+}
+
+.instructions h2{
+text-align:center;
+margin-bottom:15px
+}
+
+.instructions p{
+font-size:16px;
+line-height:1.7;
+padding:10px 0;
+border-bottom:1px solid #ffffff35
+}
+
+.number-row{
+display:flex;
+align-items:center;
+gap:8px;
+flex-wrap:wrap
+}
+
+.pay-number{
+font-size:21px;
+font-weight:bold
+}
+
+.copy-btn{
+border:0;
+background:#a91657;
+color:#fff;
+padding:9px 14px;
+border-radius:8px;
+font-weight:bold
+}
+
+.txn-title{
+margin-top:15px;
+font-weight:bold
+}
+
+.txn{
+width:100%;
+padding:15px;
+margin-top:8px;
+border:3px solid #f0a6bd;
+border-radius:11px;
+font-size:17px;
+outline:none
+}
+
+.order-info{
+margin:15px;
+padding:14px;
+background:#f5f8fb;
+border-radius:12px;
+font-family:Arial,sans-serif;
+line-height:1.8
+}
+
+.verify-btn{
+width:calc(100% - 30px);
+margin:0 15px 20px;
+padding:17px;
+border:0;
+border-radius:13px;
+background:#c90020;
+color:#fff;
+font-size:19px;
+font-weight:bold
+}
+
+.security{
+text-align:center;
+font-family:Arial,sans-serif;
+font-size:13px;
+color:#68717a;
+padding:10px
+}
+
+
+/* MOBILE */
+@media(max-width:700px){
+
+.header{
+height:95px;
+padding:10px 12px
+}
+
+.logo{
+font-size:18px
+}
+
+.logo img{
+width:48px;
+height:48px
+}
+
+.wallet{
+padding:11px 15px
+}
+
+.grid{
+width:94%;
+gap:12px
+}
+
+.card-name{
+font-size:16px;
+padding:13px 4px;
+min-height:65px
+}
+
+.section{
+font-size:27px
+}
+
+.box{
+margin:10px auto;
+padding:16px
+}
+
+.detail-img{
+width:125px;
+height:125px
+}
+
+}
+
+@media(max-width:430px){
+
+.grid{
+gap:10px
+}
+
+.card-name{
+font-size:14px
+}
+
+.wallet{
+font-size:13px;
+padding:10px
+}
+
+.recharge{
+gap:8px
+}
+
+.r{
+font-size:13px;
+padding:13px 8px
+}
+
+}
+</style>
+</head>
+
+<body>
+
+
+<!-- HEADER -->
+
+<header class="header">
+
+<div class="logo">
+
+<img src="images/file_00000000ef388207b433be64d14c006d.png"
+alt="ASIF TOPUP BD">
+
+<div>
+<b>ASIF</b>
+<span> TOPUP BD</span>
+</div>
+
+</div>
+
+<div class="wallet">
+▣ ৳0
+</div>
+
+</header>
+
+
+
+<!-- HOME PAGE -->
+
+<div id="homePage">
+
+<section class="hero">
+<h1>Special Offers</h1>
+</section>
+
+
+<div class="grid" id="topOffers"></div>
+
+
+<div class="section">
+FF GAME TOPUP
+</div>
+
+
+<div class="grid" id="gameOffers"></div>
+
+</div>
+
+
+
+<!-- OLD DETAIL MODAL -->
+
+<div class="modal" id="modal">
+
+<div class="box">
+
+<button class="close" onclick="closeModal()">×</button>
+
+<img class="detail-img" id="dimg">
+
+<h2 id="dtitle"></h2>
+
+<div class="price" id="dprice"></div>
+
+
+<div id="normalDetails">
+
+<div class="info">
+<ul id="dlist"></ul>
+</div>
+
+<button class="order" onclick="orderNow()">
+Order Now
+</button>
+
+</div>
+
+
+<div id="idDetails" style="display:none">
+
+<div class="recharge-title">
+<b>1</b> Select Recharge
+</div>
+
+<div class="recharge" id="recharge"></div>
+
+<div class="note">
+একটি প্যাকেজ সিলেক্ট করে Order Now চাপুন
+</div>
+
+<button class="order" onclick="orderNow()">
+Order Now
+</button>
+
+</div>
+
+</div>
+</div>
+
+
+
+<!-- PAYMENT PAGE -->
+
+<div id="paymentPage">
+
+<div class="pay-wrap">
+
+
+<div class="pay-top">
+
+<button class="pay-back" onclick="backToDetail()">
+←
+</button>
+
+<h2>
+Payment
+</h2>
+
+</div>
+
+
+<div class="pay-card">
+
+
+<div class="pay-logo">
+
+<img src="images/file_00000000ef388207b433be64d14c006d.png">
+
+</div>
+
+
+<div class="auto-pay">
+⚡ Payment Information
+</div>
+
+
+<div class="amount-box">
+
+৳ <span id="payAmount">
+0
+</span>
+
+</div>
+
+
+<div class="method-title">
+Select Payment Method
+</div>
+
+
+<div class="methods">
+
+
+<div class="method active"
+id="bkashMethod"
+onclick="changePayment('bKash')">
+
+<b>bKash</b>
+
+<small>
+01341181330
+</small>
+
+</div>
+
+
+<div class="method"
+id="nagadMethod"
+onclick="changePayment('Nagad')">
+
+<b>Nagad</b>
+
+<small>
+01779663908
+</small>
+
+</div>
+
+
+</div>
+
+
+<div class="instructions">
+
+<h2 id="payTitle">
+bKash Payment
+</h2>
+
+
+<p>
+1️⃣ bKash App খুলুন অথবা *247# ডায়াল করুন।
+</p>
+
+
+<p>
+2️⃣ <b>Send Money</b>-এ ক্লিক করুন।
+</p>
+
+
+<p>
+
+3️⃣ এই নম্বরে টাকা পাঠান:
+
+</p>
+
+
+<div class="number-row">
+
+<span class="pay-number"
+id="payNumber">
+01341181330
+</span>
+
+<button class="copy-btn"
+onclick="copyNumber()">
+
+📋 কপি
+
+</button>
+
+</div>
+
+
+<p>
+
+4️⃣ টাকার পরিমাণ:
+<b>৳ <span id="payAmount2">0</span></b>
+
+</p>
+
+
+<p>
+5️⃣ টাকা পাঠানোর পর Transaction ID কপি করুন।
+</p>
+
+
+<div class="txn-title">
+6️⃣ Transaction ID দিন
+</div>
+
+
+<input
+class="txn"
+id="txn"
+type="text"
+placeholder="এখানে Transaction ID লিখুন"
+>
+
+
+</div>
+
+
+<div class="order-info">
+
+📦 Offer:
+<b id="infoOffer"></b>
+
+<br>
+
+💰 Price:
+<b>৳ <span id="infoPrice"></span></b>
+
+<br>
+
+🎮 Game ID:
+<b id="infoPlayer"></b>
+
+<br>
+
+💳 Payment:
+<b id="infoPayment"></b>
+
+</div>
+
+
+<button class="verify-btn"
+onclick="sendTelegram()">
+
+✅ Verify করে Order পাঠান
+
+</button>
+
+
+<div class="security">
+
+🔒 নিরাপদ পেমেন্ট • ⚡ দ্রুত প্রসেসিং • 🎮 ASIF TOPUP BD
+
+</div>
+
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<script>
+
+
+/* =========================
+   OFFER DATA
+========================= */
+
+const base="images/";
+
+
+const offers=[
+
+{
+name:"Weekly Offer",
+price:"৳120",
+img:"weekly-offer.png",
+top:true
+},
+
+{
+name:"Monthly Offer",
+price:"৳500",
+img:"monthly-offer.png",
+top:true
+},
+
+{
+name:"Premium User Offer",
+price:"৳300",
+img:"premium-user.png",
+top:true
+},
+
+{
+name:"Weekly Live",
+price:"৳50",
+img:"weekly-offer.png",
+top:true
+},
+
+{
+name:"ID Code TopUp",
+price:"৳100",
+img:"id-code-topup.png",
+id:true
+},
+
+{
+name:"New Level Up Pass",
+price:"৳450",
+img:"level-up-pass.png"
+},
+
+{
+name:"Weekly Lite (BD Server)",
+price:"৳40",
+img:"weekly-lite.png"
+},
+
+{
+name:"Weekly/Monthly Offer",
+price:"Contact for price",
+img:"weekly-monthly.png"
+},
+
+{
+name:"Indonesia Server (UID)",
+price:"Contact for price",
+img:"indonesia-uid.png"
+},
+
+{
+name:"FF ID Like",
+price:"Contact for price",
+img:"ff-id-like.png"
+}
+
+];
+
+
+const recharge=[
+
+["Weekly","154 TK"],
+["Monthly","770 TK"],
+["25 Diamond","20 TK"],
+["50 Diamond","35 TK"],
+["115 Diamond","77 TK"],
+["240 Diamond","154 TK"],
+["355 Diamond","230 TK"],
+["505 Diamond","328 TK"],
+["610 Diamond","380 TK"],
+["850 Diamond","535 TK"],
+["1090 Diamond","690 TK"],
+["1240 Diamond","780 TK"],
+["2530 Diamond","1550 TK"],
+["5060 Diamond","3100 TK"],
+["7590 Diamond","4650 TK"],
+["10120 Diamond","Price unavailable"]
+
+];
+
+
+let selected=null;
+
+let selectedRecharge="";
+
+let selectedPayment="bKash";
+
+let playerID="";
+
+
+
+/* =========================
+   HOME CARDS
+========================= */
+
+function makeCard(o,i){
+
+return `
+<div class="card"
+onclick="openOffer(${i})">
+
+<img
+src="${base+o.img}"
+alt="${o.name}">
+
+<div class="card-name">
+${o.name}
+</div>
+
+</div>
+`;
+
+}
+
+
+document.getElementById("topOffers").innerHTML=
+
+offers
+.filter(x=>x.top)
+.map((o)=>makeCard(o,offers.indexOf(o)))
+.join("");
+
+
+document.getElementById("gameOffers").innerHTML=
+
+offers
+.filter(x=>!x.top)
+.map((o)=>makeCard(o,offers.indexOf(o)))
+.join("");
+
+
+
+/* =========================
+   OPEN OFFER
+========================= */
+
+function openOffer(i){
+
+selected=offers[i];
+
+selectedRecharge="";
+
+document.getElementById("modal").style.display="block";
+
+document.getElementById("dimg").src=
+base+selected.img;
+
+document.getElementById("dtitle").textContent=
+selected.name;
+
+document.getElementById("dprice").textContent=
+selected.price;
+
+
+document.getElementById("normalDetails").style.display=
+selected.id?"none":"block";
+
+
+document.getElementById("idDetails").style.display=
+selected.id?"block":"none";
+
+
+if(selected.id){
+
+document.getElementById("recharge").innerHTML=
+
+recharge.map((r)=>
+
+`<div class="r"
+onclick="selectRecharge(this,'${r[0]} - ${r[1]}')">
+
+<span>
+<i class="radio"></i>
+${r[0]}
+</span>
+
+<span class="tk">
+${r[1]}
+</span>
+
+</div>`
+
+).join("");
+
+}else{
+
+document.getElementById("dlist").innerHTML=[
+
+"দ্রুত ও নিরাপদ ডেলিভারি",
+"অর্ডার প্রসেসিং",
+"২৪/৭ সাপোর্ট",
+"সহজ অর্ডার সিস্টেম"
+
+].map(x=>`<li>${x}</li>`).join("");
+
+}
+
+document.body.style.overflow="hidden";
+
+}
+
+
+
+/* =========================
+   SELECT RECHARGE
+========================= */
+
+function selectRecharge(el,val){
+
+document.querySelectorAll(".r")
+.forEach(x=>{
+x.style.borderColor="#d7dce2";
+});
+
+el.style.borderColor="#087b16";
+
+selectedRecharge=val;
+
+}
+
+
+
+/* =========================
+   CLOSE DETAIL
+========================= */
+
+function closeModal(){
+
+document.getElementById("modal").style.display="none";
+
+document.body.style.overflow="auto";
+
+}
+
+
+
+/* =========================
+   ORDER NOW
+========================= */
+
+function orderNow(){
+
+if(selected.id && !selectedRecharge){
+
+alert("দয়া করে একটি Recharge Package সিলেক্ট করুন!");
+
+return;
+
+}
+
+
+/* Game ID চাইবে */
+
+playerID=prompt("এখানে আপনার Game ID / UID দিন:");
+
+if(!playerID || playerID.trim()===""){
+
+alert("Game ID না দিলে Order করা যাবে না!");
+
+return;
+
+}
+
+playerID=playerID.trim();
+
+
+/* Payment Page */
+
+document.getElementById("payAmount").innerText=
+getPrice();
+
+document.getElementById("payAmount2").innerText=
+getPrice();
+
+document.getElementById("infoOffer").innerText=
+selected.name;
+
+document.getElementById("infoPrice").innerText=
+getPrice();
+
+document.getElementById("infoPlayer").innerText=
+playerID;
+
+document.getElementById("infoPayment").innerText=
+"bKash";
+
+
+document.getElementById("modal").style.display="none";
+
+document.getElementById("homePage").style.display="none";
+
+document.getElementById("paymentPage").style.display="block";
+
+document.body.style.overflow="auto";
+
+window.scrollTo(0,0);
+
+}
+
+
+
+/* =========================
+   PRICE
+========================= */
+
+function getPrice(){
+
+if(selected.id && selectedRecharge){
+
+let parts=selectedRecharge.split(" - ");
+
+return parts[1]
+.replace(" TK","")
+.replace("৳","")
+.trim();
+
+}
+
+return selected.price
+.replace("৳","")
+.replace("Contact for price","0")
+.trim();
+
+}
+
+
+
+/* =========================
+   PAYMENT METHOD
+========================= */
+
+function changePayment(method){
+
+selectedPayment=method;
+
+
+document.getElementById("bkashMethod")
+.classList.remove("active");
+
+document.getElementById("nagadMethod")
+.classList.remove("active");
+
+
+if(method==="bKash"){
+
+document.getElementById("bkashMethod")
+.classList.add("active");
+
+document.getElementById("payTitle")
+.innerText="bKash Payment";
+
+document.getElementById("payNumber")
+.innerText="01341181330";
+
+}else{
+
+document.getElementById("nagadMethod")
+.classList.add("active");
+
+document.getElementById("payTitle")
+.innerText="Nagad Payment";
+
+document.getElementById("payNumber")
+.innerText="01779663908";
+
+}
+
+
+document.getElementById("infoPayment")
+.innerText=method;
+
+}
+
+
+
+/* =========================
+   COPY NUMBER
+========================= */
+
+function copyNumber(){
+
+let number=
+document.getElementById("payNumber").innerText;
+
+navigator.clipboard.writeText(number);
+
+alert("✅ নম্বর কপি হয়েছে!");
+
+}
+
+
+
+/* =========================
+   BACK TO DETAIL
+========================= */
+
+function backToDetail(){
+
+document.getElementById("paymentPage").style.display="none";
+
+document.getElementById("modal").style.display="block";
+
+document.body.style.overflow="hidden";
+
+}
+
+
+
+/* =========================
+   TELEGRAM
+========================= */
+
+function sendTelegram(){
+
+let txn=
+document.getElementById("txn").value.trim();
+
+
+if(txn===""){
+
+alert("দয়া করে Transaction ID দিন!");
+
+return;
+
+}
+
+
+let rechargeText=
+selectedRecharge?
+selectedRecharge:
+"মূল Offer";
+
+
+let message=
+
+`🎮 ASIF TOPUP BD
+
+🛒 নতুন অর্ডার
+
+📦 Offer: ${selected.name}
+💰 Price: ৳${getPrice()}
+🎮 Game ID / UID: ${playerID}
+📦 Recharge: ${rechargeText}
+💳 Payment: ${selectedPayment}
+🧾 Transaction ID: ${txn}
+
+✅ আমি পেমেন্ট করেছি।
+আমার অর্ডারটি চেক করে Top-Up করে দিন।`;
+
+
+let telegramURL=
+
+"https://t.me/AsifTopupOfficial?text="+
+encodeURIComponent(message);
+
+
+window.location.href=telegramURL;
+
+}
+
+
+
+/* =========================
+   MODAL OUTSIDE CLICK
+========================= */
+
+window.onclick=function(e){
+
+if(e.target.id==="modal"){
+
+closeModal();
+
+}
+
+}
+
+</script>
+
+</body>
+  </html>
